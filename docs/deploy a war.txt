@@ -1,0 +1,37 @@
+0.Можеш да слушаш и този мангал, ама само ако сметнеш, че тука описанието е много зле:
+https://www.youtube.com/watch?v=akW6bzoRcZo
+
+1. Използвам NetBeans 8
+2. Създавам нов проект Java Web
+3. В проекта под Web Pages има index.html (от там тръгва явно)
+4. променям бодито на:
+    <body>
+        <div>
+            <form action="login" method="post">
+
+                <h1 style="background-color:hsl(9, 100%, 64%);">Хело Ворлд</h1>
+                <a>Цъкни бутона за да тестваш базата: :) - означава че има връзка; :( - че няма </a><br/><br/><br/>
+                <a> User Name: </a><br/>
+                <input type="text" name ="uname"><br/>
+                <a> Password: </a><br/>
+                <input type="text" name ="password" placeholder="enter something"><br/><br/>
+                <input type="submit" name ="enter">
+            </form>
+        </div>
+    </body>
+5. съкам десен бутон на проекта и избирам New / Servlet..
+6. кръщавам го login заради  <form action="login" - да знае на къде да търси.
+7. В метода просто слагам:
+		try (PrintWriter out = response.getWriter()) {
+            out.println(":)");
+        } catch (IOException ex) {
+        }
+8. Относно базата ще пиша отделно.
+9. Тествам си проекта на локалния tomcat
+10. След натискане на бутона трябва да отваря нова страница с усмивка ( :) )
+11. Извършвам Clean Build на проекта
+12. В директория \dist на проекта има готов war file
+13. Отивам в мениджмънта на Tomcat-a на Raspberry-то.
+14. Скролвам до WAR file to deploy (под  Deploy)
+15. Избирам си файла и деплойвам.
+16. После си го намирам горе на Applications.

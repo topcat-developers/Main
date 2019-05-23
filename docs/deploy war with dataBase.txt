@@ -1,0 +1,35 @@
+!!THIS connects DataBase only on local Project for now!!
+
+1. See Deplow a War.txt file
+2. Download derbyclient.jar and derbynet.jar from the repository.
+3. Go to your project (netBeans), Libraries click right btn. add Jars/Folders
+4. Select them - Open
+5. Clean and Build on project
+6. Go to Sevices menu next to Project and Files
+7. Under DataBase select JavaDB right Click - create database; right click on it Connect
+8. Now you have something similar to jdbc:derby://localhost:1527/demoDB [demo on DEMO]
+9. Create tables using this strange  netBeans-java client.
+10. Create class MyDB with the path of step 8, name and password (in this case "demo", "demo")
+	public class MyDB {
+
+		private static Connection conn;
+
+		public static Connection getConnection() {
+			try {
+				Class.forName("org.apache.derby.jdbc.ClientDriver");
+				conn = DriverManager.getConnection("jdbc:derby://localhost:1527/demoDB", "demo", "demo");
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return conn;
+		}
+	}
+11. Execute something in your login Servlet from "deploy a war" like: 
+
+            String sql = "INSERT INTO..."; // what ever you want in your tables
+            connection = MyDB.getConnection();
+            Statement stmt = connection.createStatement();
+            stmt.execute(sql);
+			
+
